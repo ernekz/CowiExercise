@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cowi</name>
+    </assembly>
+    <members>
+        <member name="M:Cowi.Controllers.OrderController.AddProductToOrder(System.Int32,System.Int32)">
+            <summary>
+            Adds a product to the order, if the order does not exist it creates one. 
+            </summary>
+            <remarks>
+            Only Authenticated users can create/add products to the order.
+            It is being Authenticated using JWT Token.
+            Inside the JWT Token there is UserId(Email) which is used for creating order.
+            
+            
+            </remarks>
+            <param name="Order"> The user's register credentials</param>
+            <returns>Returns a message upon successful registration</returns>
+        </member>
+        <member name="M:Cowi.Controllers.OrderController.RemoveProductFromOrder(System.Int32)">
+            <summary>
+            Removes the product from Order that User holds. 
+            </summary>
+            <remarks>
+            Only Authenticated users can remove products from the order.
+            It is being Authenticated using JWT Token.
+            Inside the JWT Token there is UserId(Email) which is used for finding Users Order.
+            
+            
+            </remarks>
+            <param name="Order"> The user's register credentials</param>
+            <returns>Returns a message upon successful registration</returns>
+        </member>
+        <member name="M:Cowi.Controllers.OrderController.CurrentUserOrder">
+            <summary>
+            Retrieves User Order using JWT Token 
+            </summary>
+            <remarks>
+            
+            It is being Authenticated using JWT Token.
+            Inside the JWT Token there is UserId(Email) which is used for finding Users Order.
+            
+            
+            </remarks>
+            <param name="Order"> The user's register credentials</param>
+            <returns>Returns a message upon successful registration</returns>
+        </member>
+        <member name="M:Cowi.Controllers.OrderController.CompleteOrder">
+            <summary>
+            Completes the Order. 
+            </summary>
+            <remarks>
+            Only the User can complete the order.
+            It is being Authenticated using JWT Token.
+            Inside the JWT Token there is UserId(Email) which is used for finding Users Order.
+            Order retrieved and Transaction begins.
+            
+            
+            </remarks>
+            <param name="Order"> The user's register credentials</param>
+            <returns>Returns a message upon successful registration</returns>
+        </member>
+        <member name="M:Cowi.Controllers.OrderController.DeleteOrder">
+            <summary>
+            Delete the Order. 
+            </summary>
+            <remarks>
+            Only the User can Delete his order.
+            It is being Authenticated using JWT Token.
+            Inside the JWT Token there is UserId(Email) which is used for finding Users Order.
+            If the User has the order it will be Deleted
+            
+            
+            </remarks>
+            <param name="Order"> The user's register credentials</param>
+            <returns>Returns a message upon successful registration</returns>
+        </member>
+        <member name="M:Cowi.Controllers.ProductController.CreateProductAsync(Cowi.Models.Product)">
+            <summary>
+            You can create a Product here.
+            </summary>
+            <remarks>
+            All the parameters in the request body cannot be null
+            
+            Sample request:
+            
+                POST /Product
+                {
+                    "name": "iPhone 13 Pro",
+                    "description": "256GB Fully loaded iPhone",
+                    "price": 999.99,
+                    "stockQuantity": 50
+                }
+            </remarks>
+            <param name="product"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cowi.Controllers.ProductController.GetProductByIdAsync(System.Int32)">
+            <summary>
+            You can create retrieve the Product by id.
+            </summary>
+            <param name="product"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cowi.Controllers.ProductController.UpdateProductAsync(System.Int32,Cowi.Models.Product)">
+            <summary>
+            You can update a Product here by ID.
+            </summary>
+            <remarks>
+            You can change all information about the Product here.
+            
+            NOTE: Parameters cannot be null.
+            
+            Sample request:
+            
+                PUT /Product/{id}
+                {
+                    "name": "iPhone 13 Pro",
+                    "description": "64GB Mini loaded iPhone",
+                    "price": 700.99,
+                    "stockQuantity": 12
+                }
+            </remarks>
+            <param name="product"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cowi.Controllers.ProductController.DeleteProductAsync(System.Int32)">
+            <summary>
+            You can delete a Product here by ID.
+            </summary>
+            <param name="product"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cowi.Controllers.UserController.Register(Cowi.DTO.UserRegistrationDTO)">
+            <summary>
+            Create a User 
+            </summary>
+            <remarks>
+            There is no regulations for password nor email.
+            Parameters cannot be null
+            
+            Sample request:
+            
+                POST /register
+                {
+                    "email": "Test1",
+                    "password": "test1234"
+                }
+                
+                 POST /register
+                {
+                    "email": "Test@gmail.com",
+                    "password": "Test1234*"
+                }
+            </remarks>
+            <param name="registrationDTO"> The user's register credentials</param>
+            <returns>Returns a message upon successful registration</returns>
+        </member>
+        <member name="M:Cowi.Controllers.UserController.Login(Cowi.DTO.UserLoginDTO)">
+             <summary>
+             Authenticates a user and returns a token
+             </summary>
+             <remarks>
+            
+             
+             Sample request:
+             
+                 POST /login
+                 {
+                     "email": "Test1",
+                     "password": "test1234"
+                 }
+            
+             Sample response (200 OK):
+            
+                 {
+                     "Token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+                 }
+                 
+             </remarks>
+             <param name="userLoginDTO"> The user's login credentials.</param>
+             <returns>Returns a token upon successful authentication</returns>
+        </member>
+    </members>
+</doc>
